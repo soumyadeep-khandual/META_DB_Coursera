@@ -96,6 +96,8 @@ Domain constraints refer to the rules defined for the values that can be stored 
 When a table is related to another table via a foreign key column, then the referenced column value must exist in the other table.
 
 ## DB STRUCTURE
+![DB table scructural elements](db_table_structural_elements.png)
+
 The structure of a database consists of a set of key components. These include:      
 
 - Tables or entities, where the data is stored. 
