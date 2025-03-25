@@ -12,4 +12,4 @@
 
 # Progress
 
-- 25-03-2025 : Introduction to Databases [Module_01](Introduction_to_Databases\Module_02\README.md) and [Module_02](Introduction_to_Databases\Module_02\README.md)
+- 25-03-2025 : Introduction to Databases [Module_01](Introduction_to_Databases/Module_02/README.md) and [Module_02](Introduction_to_Databases/Module_02/README.md)
