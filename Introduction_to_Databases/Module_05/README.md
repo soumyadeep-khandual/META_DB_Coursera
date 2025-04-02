@@ -2,7 +2,7 @@
 
 ## PART 1
 
-```
+```sql
 CREATE DATABASE SportsClub;
 USE SportsClub;
 

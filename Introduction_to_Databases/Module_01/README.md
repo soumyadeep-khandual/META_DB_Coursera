@@ -32,33 +32,33 @@
 ## SQL Syntax and Subsets:
 - DDL (Data Definition Language)
     - create DB: 
-    ```
+    ```sql
     CREATE DATABASE db_name;
     ```
     - create table: 
-    ```
+    ```sql
     CREATE TABLE table_name;
     ```
 - DML (Data Manipulation Language)
     - add data to table:
-    ```
+    ```sql
     INSERT INTO table_name (col_1, col_2, ...)
     VALUES (val_1, val_2, ...);
     ```
     - update data:
-    ```
+    ```sql
     UPDATE table_name 
     SET col_a = val_x 
     WHERE col_b_= val_y;
     ```
     - delete data;
-    ```
+    ```sql
     DELETE FROM table_name 
     WHERE col_name = some_val;
     ```
 - DQL (Data Query Language)
     - query data within a table:
-    ```
+    ```sql
     SELECT col_x, col_y_, 
     FROM table_name 
     WHERE col_z = some_val;

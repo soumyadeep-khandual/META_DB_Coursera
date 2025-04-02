@@ -8,7 +8,7 @@
 - DIV `/`
 - MODULUS `%`
 
-```
+```sql
 SELECT column_name1 + column_name2
 FROM table_name;
 
@@ -29,7 +29,7 @@ WHERE column_name1 + column_name2 = 10;
 - LEQ `<=`
 - GEQ `>=`
 
-```
+```sql
 -- equality
 SELECT *
 FROM employee
@@ -46,7 +46,7 @@ WHERE salary <> 24000;
 ## ORDER BY
 sort or order the results obtained when running a SQL SELECT query in `ASC` or `DESC` order.
 
-```
+```sql
 SELECT * 
 FROM invoices 
 ORDER BY BillingCity ASC, InvoiceDate DESC;
@@ -84,7 +84,7 @@ useful when you want to filter data in a table based on a given condition in the
 
 
 ### Examples:
-```
+```sql
 SELECT * 
 FROM invoices 
 WHERE Total > 2;
@@ -111,7 +111,7 @@ WHERE Total > 2 AND (BillingCountry = 'USA' OR BillingCountry = 'France');
 
 - The DISTINCT clause doesn't ignore NULL values in DISTINCT column(s). NULL values are considered as unique values by DISTINCT. 
 
-```
+```sql
 SELECT DISTINCT BillingCountry  
 FROM invoices 
 ORDER BY BillingCountry;
