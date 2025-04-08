@@ -66,7 +66,7 @@ There are four different types of joins supported in MySQL that are covered in t
 - INNER JOIN : All records present in both tables
 - LEFT JOIN : All records present in left table with null values for records present in left but not right
 - RIGHT JOIN : All records present in right table with null values for records present in right but not left
-- SELF-JOIN :
+- SELF-JOIN : perform above join on same table.
 
 ```sql
 -- INNER JOIN
@@ -81,5 +81,41 @@ INNER JOIN Employees AS E2
 ON E1.EmployeeID = E2.LineManagerID;
 ```
 
-# GROUP BY
+# UNION
+The UNION operator is useful when you want to retrieve rows from multiple tables (or the same table with different conditions) and present them as a single, unified result.
 
+There are two main variations of the UNION operator:
+
+- UNION (or UNION DISTINCT): This operator combines the result sets and removes any duplicate rows, returning only distinct rows in the final result.
+- UNION ALL: This operator also combines the result sets, but it keeps all rows, including duplicates. If a row appears in multiple input result sets, it will also appear multiple times in the final result.
+
+```sql
+SELECT column1, column2, ...
+FROM table1
+WHERE condition1
+UNION
+SELECT column1, column2, ...
+FROM table2
+WHERE condition2;
+```
+The SELECT statements involved in a UNION operation must have the same number of columns and the corresponding columns must have compatible data types.1 The column names in the final result set will usually be taken from the column names in the first SELECT statement.
+
+# GROUP BY
+The GROUP BY clause is used in conjunction with aggregate functions (like COUNT(), AVG(), SUM(), MIN(), MAX()) to group rows that have the same values in one or more specified columns. The aggregate functions are then applied to each of these groups, producing a single summary row for each group.
+
+```sql
+SELECT column1, column2, aggregate_function(column3)
+FROM table_name
+WHERE condition
+GROUP BY column1, column2
+ORDER BY column1, column2;
+```
+
+# HAVING
+The HAVING clause is used to filter groups after they have been created by the GROUP BY clause. It's similar to the WHERE clause but operates on groups instead of individual rows.
+```sql
+SELECT department, AVG(salary) AS AverageSalary
+FROM Employees
+GROUP BY department
+HAVING AVG(salary) > 60000;
+```
