@@ -1,7 +1,22 @@
-CREATE DATABASE Lucky_Shrub;
+DROP PROCEDURE IF EXISTS GetDiscount;
+DROP FUNCTION IF EXISTS FindCost;
+
+
+CREATE DATABASE IF NOT EXISTS Lucky_Shrub;
 USE Lucky_Shrub;
-CREATE TABLE Orders (OrderID INT NOT NULL PRIMARY KEY, ClientID VARCHAR(10), ProductID VARCHAR(10), Quantity INT, Cost DECIMAL(6,2), Date DATE);
-INSERT INTO Orders(OrderID, ClientID, ProductID , Quantity, Cost, Date) VALUES
+
+TRUNCATE TABLE Orders;
+CREATE TABLE IF NOT EXISTS Orders (
+    OrderID INT NOT NULL PRIMARY KEY, 
+    ClientID VARCHAR(10), 
+    ProductID VARCHAR(10), 
+    Quantity INT, 
+    Cost DECIMAL(6,2), 
+    Date DATE
+);
+INSERT INTO Orders(
+    OrderID, ClientID, ProductID , Quantity, Cost, Date
+) VALUES
 (1, "Cl1", "P1", 10, 500, "2020-09-01"),  
 (2, "Cl2", "P2", 5, 100, "2020-09-05"),  
 (3, "Cl3", "P3", 20, 800, "2020-09-03"),  
@@ -35,6 +50,11 @@ INSERT INTO Orders(OrderID, ClientID, ProductID , Quantity, Cost, Date) VALUES
 
 -- Task 1: Create a SQL function that prints the cost value of a specific order based on the 
 -- user input of the OrderID..
+CREATE FUNCTION FindCost(order_id INT) 
+    RETURNS DECIMAL (7,2) DETERMINISTIC 
+    RETURN (SELECT Cost FROM Orders WHERE OrderID = order_id);
+
+SELECT FindCost(10);
 
 -- Task 2: Create a stored procedure called GetDiscount. This stored procedure must return the 
 -- final cost of the customer's order after the discount value has been deducted. The discount 
@@ -43,3 +63,26 @@ INSERT INTO Orders(OrderID, ClientID, ProductID , Quantity, Cost, Date) VALUES
 --      The procedure must find the order quantity of the specific OrderID. 
 --      If the value of the order quantity is more than or equal to 20 then the procedure should return the new cost after a 20% discount. 
 --      If the value of the order quantity is less than 20 and more than or equal to 10 then the procedure should return the new cost after a 10% discount.
+
+DELIMITER // 
+
+CREATE Procedure GetDiscount(order_id INT) 
+BEGIN 
+    DECLARE discounted_cost DECIMAL(7,2); 
+    DECLARE original_cost DECIMAL(7,2); 
+    DECLARE order_quantity INT; 
+    SELECT Quantity INTO order_quantity FROM Orders WHERE OrderID = order_id; 
+    SELECT Cost INTO original_cost FROM Orders WHERE OrderID = order_id; 
+    IF order_quantity >= 20 THEN
+        SET discounted_cost = original_cost * 0.8;              
+    ELSEIF order_quantity >= 10 THEN
+        SET discounted_cost = original_cost * 0.9; 
+    ELSE SET discounted_cost = original_cost;
+    END IF;
+    SELECT discounted_cost; 
+END//
+
+DELIMITER ; 
+
+CALL GetDiscount(10);
+CALL GetDiscount(18);
