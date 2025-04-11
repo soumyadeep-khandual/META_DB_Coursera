@@ -20,3 +20,5 @@
 - 07-04-2025 : Database Structures and Management with MySQL [Module_03](Database_Structures_and_Management_with_MySQL/Module_03/README.md) and [Module_04](Database_Structures_and_Management_with_MySQL/Module_04/lab_exercise_01.sql)
 - 08-04-2025 : Database Structures and Management with MySQL! [link to certificate](https://coursera.org/share/0516993c9d5731d603277d0581aab2ff)
 
+- 11-04-2025 : Advanced MySQL Topics [Module_01](Advanced_SQL/Module_01/README.md) and [Module_02](Advanced_SQL/Module_02/README.md)
+
